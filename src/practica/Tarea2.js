@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 
-
+//tarea
+//1.agregar 2 botones que hagan lo siguiente
+//1a.un boton tiene que restar 
+//1b.el otro boton tiene que resetar el valor por defecto en este caso (valor) 
 
 const CounterApp = ({ valor = 0 }) => {
     

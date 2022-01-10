@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+//esta tarea se encuentra en tarea.md
 const Counter = ({ saludo, valor }) => {
     return (
         <>
