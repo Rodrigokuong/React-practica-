@@ -1,7 +1,8 @@
-/* import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { TodoApp } from './components/08-useReducer/TodoApp';
 //import { CallbackHook } from './components/06-memos/CallbackHook';
-import { Padre } from './components/07-tarea-memo/Padre';
+//import { Padre } from './components/07-tarea-memo/Padre';
 //import { MemoHook } from './components/06-memos/MemoHook';
 //import Layout from './components/05-useLayoutEffect/Layout';
 //import { Memorize } from './components/06-memos/Memorize';
@@ -13,13 +14,13 @@ import { Padre } from './components/07-tarea-memo/Padre';
 //import CounterWithCustomHook from './components/01-useState/CounterWithCustomHook';
 //import CounterApp from './components/01-useState/CounterApp';
 //import { HookApp } from './HookApp';
-
+//import './components/08-useReducer/intro-reducer'
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Padre />
+    <TodoApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -29,6 +30,5 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
- */
 
-import './components/08-useReducer/intro-reducer'
+
