@@ -1,36 +1,62 @@
 import React, { useEffect, useReducer } from 'react';
 import { todoReducer } from './todoReducer';
 
-
 import './styles.css';
-import useForm from '../../hooks/useForm';
+import { TodoList } from './TodoList';
+import { TodoAdd } from './TodoAdd';
 
 
-/* const init = () => {
+const init = () => {
 
   return JSON.parse(localStorage.getItem('todos')) || [];
 
-  /*  return [{
-     id: new Date().getTime(),
-     desc: 'Aprender React',
-     done: false
-   }]; 
-}*/
-
-const initialState = [{
-  id: new Date().getTime(),
-  desc:'Aprender React',
-  done:false
-}];
-
-const handleSumbit = (e) => {
-  e.preventDefault();
 }
+
 export const TodoApp = () => {
 
-  const [todos] = useReducer(todoReducer, initialState);
+  const [todos, dispatch] = useReducer(todoReducer, [], init);
 
-  console.log(todos);
+
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  const handleDelete = (todoId) => {
+
+    console.log(todoId);
+
+    //crear la accion
+
+    const action = {
+      type: 'delete',
+      payload: todoId
+    }
+
+    //dispatch
+
+    dispatch(action);
+    
+  }
+
+  const handleToggle = ( todoId ) => {
+
+    dispatch(
+      { type: 'toggle',
+        payload: todoId
+      });
+  }
+
+  const handleAddTodo = ( newTodo) => {
+    dispatch( {
+      type: 'add',
+      payload: newTodo
+    })
+  }
+
+ 
+
+
 
   return (
     <div>
@@ -40,38 +66,25 @@ export const TodoApp = () => {
       <div className='row'>
 
         <div className='col-7'>
-          <ol className='list-group list-group-flush'>
-            {
-              todos.map((todo, i) => {
-                <li
-                  key={todo.id}
-                  className='list-group-item'>
-                  <p className='text-center'> {i + 1}. {todo.desc}</p>
-                  <button className='btn btn-danger'> Borrar </button>
-                </li>
-              })
-            }
-          </ol>
+
+          {/* *Crear un nuevo archivo llamado TodoList y que contenga la lista 
+              *mandar componentes(props) (todos, handleDelete, handleToggle)
+              *Crear un nuevo archivo llamado TodoListItem y que contenga de forma independiente (todo, index, handleDelete, handleToggle)
+            */}
+
+          <TodoList 
+            todos={ todos }
+            handleDelete= { handleDelete }
+            handleToggle= { handleToggle }/>
+
         </div>
 
-        <div className='col-5'> 
-          <h4> Agregar Todo </h4> 
-          <hr />
-            <form onSubmit={ handleSumbit }>
+        <div className='col-5'>
+         
+         <TodoAdd 
+            handleAddTodo = { handleAddTodo }
+          />
 
-              <input 
-                type='text'
-                name='description'
-                placeholder='Aprender...'
-                autoComplete='off'
-                className='form-control'/>
-
-                <button 
-                  className='btn btn-outline-primary mt-1 btn-block'
-                  type='submit'> 
-                    Agregar 
-                </button>
-            </form>
         </div>
       </div>
     </div>

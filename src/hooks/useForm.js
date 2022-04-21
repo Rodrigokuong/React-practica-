@@ -6,7 +6,7 @@ const useForm = (initialState = {}) => {
     const [values, setValues] = useState(initialState);
 
     const reset = () => {
-        setValues(initialState);
+        setValues( initialState );
     }
 
     const handleChange = ({ target }) => {
